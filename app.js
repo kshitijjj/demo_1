@@ -5,7 +5,6 @@ import bodyParser from 'body-parser';
 import connectDB from './config/db.js';
 import authRoute from './routes/authRoute.js';
 import productRoute from './routes/productRoute.js';
-import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
