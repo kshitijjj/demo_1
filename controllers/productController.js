@@ -28,6 +28,7 @@ export const getProduct = async (req, res) => {
 export const addProduct = async (req, res) => {
   try {
     const product = await createProduct(req.body);
+     await deleteCache('/api/products');
     return res.status(201).json({ message: 'Product created', product });
   } catch (error) {
     return res.status(400).json({ message: error.message });
@@ -37,6 +38,8 @@ export const addProduct = async (req, res) => {
 export const editProduct = async (req, res) => {
   try {
     const product = await updateProduct(req.params.id, req.body);
+    await deleteCache('/api/products');
+    await deleteCache(`/api/products/${req.params.id}`);
     return res.status(200).json({ message: 'Product updated', product });
   } catch (error) {
     return res.status(400).json({ message: error.message });
@@ -46,6 +49,8 @@ export const editProduct = async (req, res) => {
 export const removeProduct = async (req, res) => {
   try {
     const result = await deleteProduct(req.params.id);
+    await deleteCache('/api/products');
+    await deleteCache(`/api/products/${req.params.id}`);
     return res.status(200).json(result);
   } catch (error) {
     return res.status(400).json({ message: error.message });

@@ -12,8 +12,8 @@ import {
 const router = express.Router();
 
 // these are the routes you will add cacheMiddleware to
-router.get('/', verifyToken, getProducts);
-router.get('/:id', verifyToken, getProduct);
+router.get('/', verifyToken,cacheMiddleware(60), getProducts);
+router.get('/:id', verifyToken,cacheMiddleware(30), getProduct);
 
 // these routes change data — you will add deleteCache here
 router.post('/', verifyToken, addProduct);
