@@ -8,6 +8,7 @@ import {
   editProduct,
   removeProduct
 } from '../controllers/productController.js';
+import { cacheMiddleware } from '../middlewares/cacheMiddleware.js';
 
 const router = express.Router();
 
