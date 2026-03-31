@@ -6,6 +6,7 @@ import {
   updateProduct,
   deleteProduct
 } from '../services/productService.js';
+import { cacheMiddleware } from '../middlewares/cacheMiddleware.js';
 
 export const getProducts = async (req, res) => {
   try {
