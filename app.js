@@ -33,7 +33,6 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 
-  // keep Redis alive — prevents Upstash free tier from sleeping
   setInterval(async () => {
     try {
       await redis.ping();
@@ -42,4 +41,5 @@ app.listen(PORT, () => {
       console.error('⚠️ Redis keep-alive failed');
     }
   }, 30000);
+
 });
